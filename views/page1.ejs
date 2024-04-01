@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./page.css">
+        <style>
+            .page{
+                display: flex;
+                gap:15px;
+                height: fit-content;
+                width: 200px;
+                border: none;
+            }
+            div{
+                height:fit-content;
+                width: fit-content;
+                border-radius: 10px;
+                border: 1px solid black;
+            }
+            .pageno{
+                margin-top: 15px;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+    <body>
+        <select name="month" onchange="this.options[this.selectedIndex].value && (window.location = `/attendenceorderby/?pageno=<%= parseInt(1) %>&oby=<%= oby %>&order=<%= order %>&month=`+this.options[this.selectedIndex].value);">
+            <% if (month==1) { %>
+                <option value="12" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=12&oby=<%= oby %>&order=<%= order %>">December/23</option>
+                <option value="1" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=1&oby=<%= oby %>&order=<%= order %>" selected>January/24</option>
+                <option value="2" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=2&oby=<%= oby %>&order=<%= order %>">February/24</option>
+            <% } %>
+            <% if (month==2) { %>
+                <option value="12" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=12&oby=<%= oby %>&order=<%= order %>">December/23</option>
+                <option value="1" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=1&oby=<%= oby %>&order=<%= order %>">January/24</option>
+                <option value="2" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=2&oby=<%= oby %>&order=<%= order %>" selected>February/24</option>
+            <% } %>
+            <% if (month==12) { %>
+                <option value="12" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=12&oby=<%= oby %>&order=<%= order %>"selected>December/23</option>
+                <option value="1" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=1&oby=<%= oby %>&order=<%= order %>" >January/24</option>
+                <option value="2" window.href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=2&oby=<%= oby %>&order=<%= order %>">February/24</option>
+            <% } %>
+            
+        </select>
+        <% if (data!=undefined || pn!=undefined) { %>
+            <a href="/">BACK</a>
+                <div class="page">
+            
+                    <% if (pn == 1) { %>
+                        <div class="pageno"><%= pn %></div>
+                        <div class="next"><a id="next" href="/attendenceorderby/?pageno=<%= parseInt(pn)+1 %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&gt;</p></a></div>
+                        <div class="lp"><a id="lp" href="/attendenceorderby/?pageno=<%= tp %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&gt;&gt;</p></a></div>
+                        <% } %>
+                        
+                        
+                        <% if (pn == tp ) { %>
+                            <div class="fp"><a id="fp"  href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&lt;&lt;</p></a></div>
+                            <div class="back"><a id="back" href="/attendenceorderby/?pageno=<%= parseInt(pn)-1 %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&lt;</p></a></div>
+                            <div class="pageno"><%= pn %></div>
+                    <% } %>
+                    <% if (pn>1 && pn<tp) { %>
+                        <div class="fp"><a id="fp"  href="/attendenceorderby/?pageno=<%= parseInt(1) %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&lt;&lt;</p></a></div>
+                        <div class="back"><a id="back" href="/attendenceorderby/?pageno=<%= parseInt(pn)-1 %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&lt;</p></a></div>
+                        <div class="pageno"><%= pn %></div>
+                        <div class="next"><a id="next" href="/attendenceorderby/?pageno=<%= parseInt(pn)+1 %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&gt;</p></a></div>
+                        <div class="lp"><a id="lp" href="/attendenceorderby/?pageno=<%= tp %>&month=<%= month %>&oby=<%= oby %>&order=<%= order %>"><p>&gt;&gt;</p></a></div>
+                    <% } %>
+                </div>
+        <% } %>
+        <% if (data!=undefined || pn!=undefined) { %>
+            <table border="1">
+                <tr>
+                    <% for( let i = 0; i < Object.keys(data[0]).length; i++ ) { %>
+                        <th><a href="/attendenceorderby/?pageno=1&month=<%= month %>&oby=<%= Object.keys(data[0])[i] %>&order=<%= order %>"><%= Object.keys(data[0])[i] %></a></th>
+                        <% if (order=='ASC' && oby==Object.keys(data[0])[i]) { %>
+                            <td><a href="/attendenceorderby/?pageno=1&month=<%= month %>&oby=<%= Object.keys(data[0])[i] %>&order=DESC"><i class="fa-solid fa-arrow-down"></i></a></td>
+                        <% } else { %>
+                            <td><a href="/attendenceorderby/?pageno=1&month=<%= month %>&oby=<%= Object.keys(data[0])[i] %>&order=ASC"><i class="fa-solid fa-arrow-up"></i></a></td>
+                    <% } %>
+                    <% } %>
+                </tr>
+                
+                <% for( let i = 0; i < data.length; i++ ) { %>
+                <tr>
+                    <% for( let j = 0; j < Object.keys(data[0]).length; j++ ) { %>
+                        <td colspan="2"><%= data[i][Object.keys(data[0])[j]] %></td>
+            
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>
+            <% } %>
+    </body>
+</html>

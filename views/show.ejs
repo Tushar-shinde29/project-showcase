@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>emp details</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+            <th>emp no</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>update</th>
+            </tr>
+            <% for( let i = 0; i < data.length; i++ ) { %>
+                <tr>
+                <td><%= data[i].eno %></td>
+                <td><%= data[i].fname %></td>
+                <td><%= data[i].lname %></td>
+                <td><a href="/view?eno=<%= data[i].eno %>">UPDATE</a></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

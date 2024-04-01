@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>attend</title>
+    </head>
+    <style>
+        .page{
+            display: flex;
+            gap:15px;
+            height: fit-content;
+            width: 200px;
+            border: none;
+        }
+        div{
+            height:fit-content;
+            width: fit-content;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+        .pageno{
+            margin-top: 15px;
+        }
+
+    </style>
+    <body>
+        <h1>TUSHAR SHINDE</h1>
+        <h2>Attendence Grid</h2>
+        <div class="page">
+            
+            <% if (pn == 1) { %>
+                <div class="pageno"><%= pn %></div>
+                <div class="next"><a id="next" href="/attendencegrid/?pageno=<%= parseInt(pn)+1 %>&month=<%=month%>"><p>&gt;</p></a></div>
+                <div class="lp"><a id="lp" href="/attendencegrid/?pageno=<%= 41 %>&month=<%=month%>"><p>&gt;&gt;</p></a></div>
+                <% } %>
+                
+                
+                <% if (pn ==41 ) { %>
+                    <div class="fp"><a id="fp"  href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=<%=month%>"><p>&lt;&lt;</p></a></div>
+                    <div class="back"><a id="back" href="/attendencegrid/?pageno=<%= parseInt(pn)-1 %>&month=<%=month%>"><p>&lt;</p></a></div>
+                    <div class="pageno"><%= pn %></div>
+            <% } %>
+            <% if (pn>1 && pn<41) { %>
+                <div class="fp"><a id="fp"  href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=<%=month%>"><p>&lt;&lt;</p></a></div>
+                <div class="back"><a id="back" href="/attendencegrid/?pageno=<%= parseInt(pn)-1 %>&month=<%=month%>"><p>&lt;</p></a></div>
+                <div class="pageno"><%= pn %></div>
+                <div class="next"><a id="next" href="/attendencegrid/?pageno=<%= parseInt(pn)+1 %>&month=<%=month%>"><p>&gt;</p></a></div>
+                <div class="lp"><a id="lp" href="/attendencegrid/?pageno=<%= 41 %>&month=<%=month%>"><p>&gt;&gt;</p></a></div>
+            <% } %>
+        </div>
+        <br>
+            
+            <select name="month" onchange="this.options[this.selectedIndex].value && (window.location = `/attendencegrid/?pageno=<%= parseInt(1) %>&month=`+this.options[this.selectedIndex].value);">
+                <% if (month==1) { %>
+                    <option value="12" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=12">December/23</option>
+                    <option value="1" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=1" selected>January/24</option>
+                    <option value="2" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=2">February/24</option>
+                <% } %>
+                <% if (month==2) { %>
+                    <option value="12" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=12">December/23</option>
+                    <option value="1" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=1">January/24</option>
+                    <option value="2" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=2" selected>February/24</option>
+                <% } %>
+                <% if (month==12) { %>
+                    <option value="12" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=12 "selected>December/23</option>
+                    <option value="1" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=1" >January/24</option>
+                    <option value="2" window.href="/attendencegrid/?pageno=<%= parseInt(1) %>&month=2">February/24</option>
+                <% } %>
+                
+            </select>
+        <br>
+        <p>attendence of month  : <%= month %> </p>
+        <table border=1px>
+            <tr>
+                <th>id</th>
+                <th>firstname</th>
+                <th>Total days</th>
+                <th>present</th>
+                <th>percentage(in %)</th>
+            </tr>
+            <% for(let i=0;i<data.length;i++){ %>
+                <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].firstname %></td>
+                <td><%= 31 %></td> 
+                <td><%= data[i].present %></td>
+                <td><%= data[i].pr %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>result</title>
+    </head>
+    <style>
+        .page{
+            display: flex;
+            gap:15px;
+            height: fit-content;
+            width: 200px;
+            border: none;
+        }
+        div{
+            height:fit-content;
+            width: fit-content;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+        .pageno{
+            margin-top: 15px;
+        }
+
+    </style>
+    <body>
+        <h1 align="center">SHINDE TUSHAR</h1>
+       <h2 align="center">RESULT</h2>
+        <div class="page">
+            
+            <% if (pn == 1) { %>
+                <div class="pageno"><%= pn %></div>
+                <div class="next"><a id="next" href="/result/?pageno=<%= parseInt(pn)+1 %>"><p>&gt;</p></a></div>
+                <div class="lp"><a id="lp" href="/result/?pageno=<%= 41 %>"><p>&gt;&gt;</p></a></div>
+                <% } %>
+                
+                
+                <% if (pn ==41 ) { %>
+                    <div class="fp"><a id="fp"  href="/result/?pageno=<%= parseInt(1) %>"><p>&lt;&lt;</p></a></div>
+                    <div class="back"><a id="back" href="/result/?pageno=<%= parseInt(pn)-1 %>"><p>&lt;</p></a></div>
+                    <div class="pageno"><%= pn %></div>
+            <% } %>
+            <% if (pn>1 && pn<41) { %>
+                <div class="fp"><a id="fp"  href="/result/?pageno=<%= parseInt(1) %>"><p>&lt;&lt;</p></a></div>
+                <div class="back"><a id="back" href="/result/?pageno=<%= parseInt(pn)-1 %>"><p>&lt;</p></a></div>
+                <div class="pageno"><%= pn %></div>
+                <div class="next"><a id="next" href="/result/?pageno=<%= parseInt(pn)+1 %>"><p>&gt;</p></a></div>
+                <div class="lp"><a id="lp" href="/result/?pageno=<%= 41 %>"><p>&gt;&gt;</p></a></div>
+            <% } %>
+        </div>
+    <table border=1px>
+        <tr>
+            <th rowspan="2">id</th>
+            <th rowspan="2">name</th>
+            <th colspan="2">prelim</th>
+            <th colspan="2">terminal</th>
+            <th colspan="2">final</th>
+            <th rowspan="2">totalpracticalmark</th>
+            <th rowspan="2">totaltheorymark</th>
+            <th rowspan="2">total</th>
+            <th rowspan="2">result</th>
+        </tr>
+        <tr>
+            <td>pracitalmarks</td>
+            <td>theorymarks</td>
+            <td>pracitalmarks</td>
+            <td>theorymarks</td>
+            <td>pracitalmarks</td>
+            <td>theorymarks</td>
+        </tr>
+        <% for(let i=0;i<data.length;i++){ %>
+            <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].firstname %></td>
+            <td><%= data[i].prelimpra %></td>
+            <td><%= data[i].prelimth %></td> 
+            <td><%= data[i].terminalpra %></td>
+            <td><%= data[i].terminalth %></td>
+            <td><%= data[i].finalpra %></td>
+            <td><%= data[i].finalth %></td>
+            <td><%= data[i].totalp %></td> 
+            <td><%= data[i].totalt %></td>   
+            <td><%= data[i].total %></td> 
+            <td><a href="/individualresult/?rollno=<%= data[i].id %>">view result</a></td> 
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

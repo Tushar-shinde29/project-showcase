@@ -1,0 +1,218 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <button name="btn2" id="prev" onclick="prev()">previous</button>&nbsp;&nbsp;
+    <button name="btn" id="next" onclick="next()">next</button>
+    <br>
+    <br>
+    <input type="text" id="s1" name="search">
+    <button name="searchbt" value="submit" onclick="search()">SEARCH</button>
+    <table id="mytab" border="1">
+    </table>
+    <script>
+        var i = 0;
+        var start = 0;
+        var end = start + 10;
+        var op=[];
+        var op1=[];
+        var postdata=null;
+        var commentdata=null;       
+
+        async function call() {
+            op = await fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json());
+            console.log("OP ",op);
+            return op;
+        }
+
+        async function callp() {
+            op2 = await fetch('https://jsonplaceholder.typicode.com/comments')
+            const data  = await op2.json();
+            console.log(data);
+            return data;
+        }
+
+        function showdata(){
+            call().then((op)=>{
+                postdata =  op
+                createh();
+                ctable(postdata,start,end);
+            });
+        }
+        function showcomment(){
+            callp().then((data)=>{
+                commentdata=data;
+                creath();
+                ctable(commentdata,start,end);
+            })
+        }
+        showdata();
+        showcomment();
+        async function createh() {
+            var tr1 = document.createElement('tr');
+            var htr = document.querySelector("table").appendChild(tr1);
+
+            for (const [key, value] of Object.entries(postdata[1])) {
+                if (!(key == "userId")) {
+                    var th1 = document.createElement('th');
+                    th1.innerHTML = key;
+                    htr.appendChild(th1);
+                }
+
+            }
+            var th2 = document.createElement('th');
+            th2.innerHTML = "comments";
+            htr.appendChild(th2);
+            return op;
+        }
+        async function ctable(postdata,start, end) {
+            // console.log('in ctable'+ start,end);
+
+
+            postdata.forEach(element => {
+                if (element.id > start && element.id <= end) {
+                    var tr = document.createElement('tr');
+                    var ntr = document.querySelector("table").appendChild(tr);
+                    for (const [key, value] of Object.entries(element)) {
+                        if (!(key == "userId")) {
+                            var td = document.createElement('td');
+                            td.innerHTML = value;
+                            //console.log(key+":"+value);
+                            ntr.appendChild(td);
+                        }
+                    }
+                    // console.log(element.userId);
+                    var td = document.createElement('td');
+                    var btn1 = document.createElement('button');
+                    btn1.innerHTML = "SHOW COMMENTS"
+                    document.querySelector("table").lastElementChild.appendChild(btn1);
+                    btn1.setAttribute('onclick', `comment(${element.id})`);
+                }
+
+            });
+        }
+        async function next() {
+            document.querySelectorAll("p").forEach((el) => el.remove());
+            if (start >= 0 && end < 100) {
+                start += 10;
+                end += 10;
+                document.querySelectorAll("tr").forEach((el) => el.remove());
+                console.log('in Bnext'+ start,end);
+                await createh();
+                await ctable(postdata,start, end);
+            }
+            console.log('in Anext'+ start,end);
+            return start, end;
+        }
+        async function prev() {
+            document.querySelectorAll("p").forEach((el) => el.remove());
+            if (start > 0 && end <= 100) {
+                start -= 10;
+                end -= 10;
+                document.querySelectorAll("tr").forEach((el) => el.remove());
+                console.log('in prev' + start, end);
+                await createh();
+                await ctable(postdata,start,end);
+            }
+            return start, end;
+        }
+        async function comment(id) {
+            if (document.getElementById("back") == null) {
+                var btn1 = document.createElement('button');
+                btn1.innerHTML = "BACK"
+                btn1.id = "back";
+                btn1.setAttribute('onclick', `load()`);
+                document.querySelector("table").appendChild(btn1);
+            }
+
+            document.querySelectorAll("tr").forEach((el) => el.remove());
+            document.querySelectorAll("p").forEach((el) => el.remove());
+            var tr1 = document.createElement('tr');
+            var htr = document.querySelector("table").appendChild(tr1);
+
+            for (const [key, value] of Object.entries(commentdata[1])) {
+                var th1 = document.createElement('th');
+                th1.innerHTML = key;
+                htr.appendChild(th1);
+            }
+            commentdata.forEach(element => {
+                if (element.postId == id) {
+                    var tr = document.createElement('tr');
+                    var ntr = document.querySelector("table").appendChild(tr);
+                    for (const [key, value] of Object.entries(element)) {
+                        var td = document.createElement('td');
+                        td.innerHTML = value;
+                        ntr.appendChild(td);
+                    }
+
+                }
+
+            });
+        }
+        async function search() {
+            if (document.getElementById("back") == null) {
+                var btn1 = document.createElement('button');
+                btn1.innerHTML = "BACK"
+                btn1.id = "back";
+                btn1.setAttribute('onclick', `load()`);
+                document.querySelector("table").appendChild(btn1);
+            }
+
+            var id = document.getElementById("s1").value.trim();
+            if(document.getElementById("s1").value =="")
+            {
+                window.alert("pls enter value");
+            }
+            else
+            {
+                document.querySelectorAll("p").forEach((el) => el.remove());
+                document.querySelectorAll("tr").forEach((el) => el.remove());
+                    await createh();
+              
+                    postdata.forEach(element => {
+                    if (element.title.match(id)) {
+                        var tr = document.createElement('tr');
+                        var ntr = document.querySelector("table").appendChild(tr);
+                        for (const [key, value] of Object.entries(element)) {
+                            if (!(key == "userId")) {
+                                var td = document.createElement('td');
+                                td.innerHTML = value;
+                                ntr.appendChild(td);
+
+                            }
+
+                        }
+                        var td = document.createElement('td');
+                        var btn1 = document.createElement('button');
+                        btn1.innerHTML = "SHOW COMMENTS"
+                        document.querySelector("table").lastElementChild.appendChild(btn1);
+                        btn1.setAttribute('onclick', `comment(${element.id})`);
+                    }
+                });
+            }
+
+
+
+        }
+        async function load() {
+            document.querySelectorAll("p").forEach((el) => el.remove());
+            document.querySelectorAll("tr").forEach((el) => el.remove());
+            if (!(document.getElementById("back") == null)) {
+                document.getElementById("back").remove();
+            }
+            await createh();
+            await ctable(postdata,0, 10);
+            console.log(start);
+            return start,end;
+        }
+        if(start==0)
+        {
+            load();
+        }
+
+    </script>
+</body>
+
+</html>

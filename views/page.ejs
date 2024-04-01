@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/page.css">
+        <style>
+            .mfilter{
+               display: none;
+               margin-left: 5px;
+               margin-right: 5px;
+
+            }
+            form{
+                display: flex;
+            }
+            input{
+               margin-left: 15px;
+               margin-right: 15px;
+            }
+            .page{
+                display: flex;
+                gap:15px;
+                height: fit-content;
+                width: 200px;
+                border: none;
+            }
+            div{
+                height:fit-content;
+                width: fit-content;
+                border-radius: 10px;
+                border: 1px solid black;
+            }
+            .pageno{
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/search" method="post">
+             
+                <input type="text" name="search" placeholder="enter valid search id (1/602)" tabindex="1">
+                <input type="hidden" name="count" value="1" >
+                <a onclick='filter()'>SHOW MORE</a>
+                <input class="mfilter" type="text" name="firstname" placeholder="enter first name" tabindex="2" >
+                <input class="mfilter" type="text" name="lastname" placeholder="enter last name" tabindex="3">
+                <input class="mfilter" type="text" name="city" placeholder="enter city" tabindex="4">
+                <input class="mfilter" type="text" name="mobileno" placeholder="enter mobilenumber" tabindex="5" >
+                <input type="submit" name="submit" value="GO" tabindex="2" >
+                </form>
+                <%- include('pagination.ejs',{data:data,pn:pn,tp:tp,tr:tr}) %>
+                <%- include('table.ejs',{data:data,pn:pn,tp:tp,tr:tr}) %>
+        <script type='text/javascript'>
+            function filter()
+            {
+                document.querySelectorAll('.mfilter').forEach((q)=>{
+                    q.style.display="flex";
+                })
+
+            }
+        </script>
+    </body>
+</html>

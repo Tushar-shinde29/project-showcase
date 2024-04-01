@@ -1,0 +1,275 @@
+*{
+    box-sizing: border-box;
+}
+.items{
+    list-style-type: none;
+}
+li{
+    display: inline;
+    padding: 12px;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1770px;
+    margin: 0 auto;
+}
+.getit{
+    background-color: white;
+    border:2px solid blue;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size:medium;
+    color: blue;
+    height: 50px;
+    width: 150px;
+}
+.con{
+    background-color: blue;
+    border:1px solid blue;
+    border-radius: 5px;
+    height:50px;
+    font-size:medium;
+    width: 250px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.container{
+    padding: 15px;
+    max-width: 1770px;
+    margin: 0 auto;
+}
+
+.container1{
+    display: grid;
+    height:max-content;
+    column-gap: 2px;
+    grid-template-columns: auto auto;
+}
+.cp2{
+    font-size: 35px;
+    text-align: left;
+    align-self: center;
+}
+.container2{
+    margin-top: 20px;
+    display:grid;
+    height:max-content;
+    grid-template-columns: auto auto auto;
+    padding: 20px 20px;
+    gap: 20px;
+    background-color: #F3F7FD;
+}
+.tt{
+    color:#183B56;
+}
+.lm{
+    font-weight: bold;
+    color: #1565D8;
+}
+.cp21{
+    grid-area: 1/1/2/4;
+    height: fit-content;
+}
+.cp211{
+    text-align: center;
+}
+.cp212{
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 25px;
+}
+.p21{
+    display: flex;
+}
+.cp22{
+    border-radius: 8px;
+    grid-area: 2/1/3/2;
+    
+}
+.cp23{
+    border-radius: 8px;
+    grid-area: 2/2/3/3;
+    
+}
+.cp24{
+    border-radius: 8px;
+    grid-area: 2/3/3/4;
+    
+}
+.card{
+    padding:20px 20px;
+}
+.card1{
+    margin:0 auto;
+    justify-content: center;
+    padding:20px 20px;
+    height: 250px;
+    width: 250px;
+    border-radius: 8px;
+    background-color: white;
+}
+.container3{
+    margin-top: 20px;
+    display:grid;
+    grid-template-columns: auto auto ;
+    padding: 20px 20px; 
+    row-gap: 20px;
+    column-gap: 20px;
+}
+.cp31{
+    grid-area: 1/1/2/3;
+    text-align: center;
+}
+.cp32{
+    grid-area: 2/1/3/2;
+    margin: auto;
+    width: max-content;
+    position: relative;
+    text-align: center;
+    color: white; 
+}
+.im1{
+    position: absolute;
+    bottom: 50px;
+    left:16px;
+    font-size: xx-large;
+    text-align: left;
+    margin-left: 25px;
+    margin-right: 25px;
+    
+} 
+.cp33{
+    grid-area: 2/2/3/3;
+    width: max-content;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.container4{
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 50px;
+    display:grid;
+    grid-template-columns: auto auto auto ;
+    padding: 20px 20px;
+}
+.cp61{
+    border-radius: 8px;
+    
+}
+.cp62{
+    border-radius: 8px;
+    
+}
+.cp63{
+    border-radius: 8px;
+    
+}
+.cp64{
+    border-radius: 8px;
+    
+}
+.cp65{
+    border-radius: 8px;
+    
+}
+.cp66{
+    border-radius: 8px;
+    
+}
+.container5{
+    margin-top: 20px;
+    display:grid;
+    grid-template-columns: auto auto auto ;
+    padding: 20px 20px;
+    gap: 20px;
+}
+.i1{
+    position: relative;
+    z-index: 1;
+}
+.i2{
+    position: relative;
+    z-index: 2;
+    left: -14px;
+}
+.i3{
+    position: relative;
+    left: -24px;
+    z-index: 2;
+}
+.cp51{
+    text-align: center;
+    justify-content: center;
+}
+.cp52{
+    text-align: center;
+    justify-content: center;
+}
+.cp53{
+    text-align: center;
+    justify-content: center;
+}
+.cp5{
+    display: flex;
+    justify-content: center;
+}
+.h{
+    color: #183B56;
+    font-size: x-large;
+}
+.d{
+    color: #5A7184;
+    font-size: medium;
+}
+footer{
+    background-color: #0D2436;
+    height: 350px;
+    display: grid;
+    grid-template-columns: auto auto;
+    max-width: 1770px;
+    margin: 0 auto;
+}
+.f1{
+    margin: auto;
+    grid-area: 1/1/2/2;
+}
+.f2{
+    margin: auto;
+    color: white;
+    font-size: xx-large;
+    grid-area: 1/2/2/3;
+}
+.f3{
+    grid-area: 2/1/3/3;
+    margin: auto;
+}
+
+.mail{
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+}
+.st{
+    background-color: blue;
+    border:1px solid blue;
+    border-radius: 5px;
+    height:50px;
+    font-size:medium;
+    width: 150px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+hr{
+    width: 85%;
+}

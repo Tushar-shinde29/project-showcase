@@ -1,0 +1,18 @@
+<% if (data!=undefined || pn!=undefined) { %>
+    <table border="1">
+        <tr>
+            <% for( let i = 0; i < Object.keys(data[0]).length; i++ ) { %>
+                <th><%= Object.keys(data[0])[i] %></th>
+            <% } %>
+        </tr>
+        
+        <% for( let i = 0; i < data.length; i++ ) { %>
+        <tr>
+            <% for( let j = 0; j < Object.keys(data[0]).length; j++ ) { %>
+                <td><%= data[i][Object.keys(data[0])[j]] %></td>
+            <% } %>
+        </tr>
+        <% } %>
+    </table>
+    <% } %>
+    

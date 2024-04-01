@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>component</title>
+    </head>
+    <style>
+        .page{
+            display: flex;
+            gap:15px;
+            height: fit-content;
+            width: 200px;
+            border: none;
+        }
+        div{
+            height:fit-content;
+            width: fit-content;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+        .pageno{
+            margin-top: 15px;
+        }
+
+    </style>
+    <body>
+        <div class="page">
+
+            
+        <% if (pn == 1) { %>
+            <div class="pageno"><%= pn %></div>
+            <div class="next"><a id="next" href="/order/?pageno=<%= parseInt(pn)+1 %>&oby=<%= oby%>"><p>&gt;</p></a></div>
+            <div class="lp"><a id="lp" href="/order/?pageno=<%= 253 %>&oby=<%= oby%>"><p>&gt;&gt;</p></a></div>
+            <% } %>
+            
+            
+            <% if (pn ==253 ) { %>
+                <div class="fp"><a id="fp"  href="/order/?pageno=<%= parseInt(1) %>&oby=<%= oby%>"><p>&lt;&lt;</p></a></div>
+                <div class="back"><a id="back" href="/order/?pageno=<%= parseInt(pn)-1 %>&oby=<%= oby%>"><p>&lt;</p></a></div>
+                <div class="pageno"><%= pn %></div>
+        <% } %>
+        <% if (pn>1 && pn<253) { %>
+            <div class="fp"><a id="fp"  href="/order/?pageno=<%= parseInt(1) %>&oby=<%= oby%>"><p>&lt;&lt;</p></a></div>
+            <div class="back"><a id="back" href="/order/?pageno=<%= parseInt(pn)-1 %>&oby=<%= oby%>"><p>&lt;</p></a></div>
+            <div class="pageno"><%= pn %></div>
+            <div class="next"><a id="next" href="/order/?pageno=<%= parseInt(pn)+1 %>&oby=<%= oby%>"><p>&gt;</p></a></div>
+            <div class="lp"><a id="lp" href="/order/?pageno=<%= 253 %>&oby=<%= oby%>"><p>&gt;&gt;</p></a></div>
+        <% } %>
+
+
+            
+
+        </div>
+        <table border=1px>
+            <tr>
+                <th><a href="/order/?pageno=<%= 1 %>&oby=rollno">roll no</a></th>
+                <th><a href="/order/?pageno=<%= 1 %>&oby=sname">student name</a></th>
+                <th><a href="/order/?pageno=<%= 1 %>&oby=sem">sem</a></th>
+                <th><a href="/order/?pageno=<%= 1 %>&oby=mobileno">Mobile no</a></th>
+                <th><a href="/order/?pageno=<%= 1 %>&oby=address">Address</a></th>
+                <th>Created_at</th>
+            </tr>
+            <% for(let i=0;i<data.length;i++){ %>
+                <tr>
+                <td><%= data[i].rollno %></td>
+                <td><%= data[i].sname %></td>
+                <td><%= data[i].sem %></td> 
+                <td><%= data[i].mobileno %></td>
+                <td><%= data[i].address %></td>
+                <td><%= data[i].created_at %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

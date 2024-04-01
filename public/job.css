@@ -1,0 +1,71 @@
+table{
+    border-spacing: 15px;
+    font-size: x-large;
+}
+.basicdetails{
+    margin: 45px;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    height: max-content;
+}
+.workdetail,.langdetails,.techdetails,.educationdetail,.preferencedetails,.referencedetails{
+    display: none;
+    margin: 45px;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    height: max-content;
+}
+.navigator{
+    border: 1px solid black;
+    margin: 20px;
+    display: flex;
+    width: fit-content;
+}
+
+.navigator td
+{
+    border:1px solid black;
+    border-radius: 5px;
+}
+.basicnav{
+    border: 1px solid black;
+    padding: 5px;
+    color: white;
+    background-color: black;
+
+}
+.expnav,.langnav,.technav,.educationnav,.refnav,.prefnav,.viewnav{
+    border: 1px solid black;
+    padding: 5px;
+}
+.nextb
+{
+    display: flex;
+    cursor: pointer;
+    padding: 0 25px;
+    justify-content: flex-end;
+}
+.next
+{
+    display: flex;
+    cursor: pointer;
+    padding: 0 25px;
+    justify-content: space-between;
+}
+p{
+    cursor: pointer;
+}
+.addremove{
+    display: flex;
+    column-gap: 15px;
+    justify-content: end;
+    padding-right: 75px;
+}
+#mytab{
+    display:none;
+}
+#update{
+    display: none;
+}

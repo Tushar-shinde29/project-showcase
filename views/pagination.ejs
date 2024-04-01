@@ -1,0 +1,28 @@
+<% if (data!=undefined || pn!=undefined) { %>
+    <a href="/">BACK</a>
+        <div class="page">
+            <% if (tr>15 && tr!=undefined) { %>
+             
+                <% if (pn == 1) { %>
+                    <div class="pageno"><%= pn %></div>
+                    <div class="next"><a id="next" href="/search/?pageno=<%= parseInt(pn)+1 %>"><p>&gt;</p></a></div>
+                    <div class="lp"><a id="lp" href="/search/?pageno=<%= tp %>"><p>&gt;&gt;</p></a></div>
+                    <% } %>
+                    
+                    
+                    <% if (pn == tp ) { %>
+                        <div class="fp"><a id="fp"  href="/search/?pageno=<%= parseInt(1) %>"><p>&lt;&lt;</p></a></div>
+                        <div class="back"><a id="back" href="/search/?pageno=<%= parseInt(pn)-1 %>"><p>&lt;</p></a></div>
+                        <div class="pageno"><%= pn %></div>
+                        <% } %>
+                        <% if (pn>1 && pn<tp) { %>
+                            <div class="fp"><a id="fp"  href="/search/?pageno=<%= parseInt(1) %>"><p>&lt;&lt;</p></a></div>
+                            <div class="back"><a id="back" href="/search/?pageno=<%= parseInt(pn)-1 %>"><p>&lt;</p></a></div>
+                            <div class="pageno"><%= pn %></div>
+                            <div class="next"><a id="next" href="/search/?pageno=<%= parseInt(pn)+1 %>"><p>&gt;</p></a></div>
+                            <div class="lp"><a id="lp" href="/search/?pageno=<%= tp %>"><p>&gt;&gt;</p></a></div>
+                            <% } %>
+            <% } %>
+        </div>
+<% } %>
+                

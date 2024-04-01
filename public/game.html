@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>game</title>
+        <style>
+            table{
+                border: 1px solid black;
+                border-radius: 10px;
+                min-height: 700px;
+                min-width: 700px;
+            }
+            td{
+                border: 1px solid black;
+                border-radius: 10px;
+                /* height: 50px;
+                width: 50px; */
+                background-color: rgb(226, 255, 4);
+            }
+            #c1{
+                opacity: 0.5;
+            }
+
+        </style>
+    </head>
+    <body style="background-color: aqua;">
+        <h1 align="center">Tushar shinde </h1>
+        <h2 align="center">Day2 GAME DEMO</h2>
+        <h3 align="center">24DEV028</h3>
+        <h3 align="center" id="time"></h3>
+        <h4 align="center" id="score"></h4>
+        <table id="newtab" align="center">
+            <tr class="a" id="r1">
+                <td onclick="addboth(this.id)" id="c1"></td>
+                <td onclick="addboth(this.id)" id="blank"></td>
+            </tr>
+            <tr class="b" id="r2">
+                <td onclick="addboth(this.id)" id="r3"></td>
+                <td onclick="addboth(this.id)" id="r4"></td>
+            </tr>
+        </table>    
+        <script>
+            console.log(Math.floor(Math.random()*255));
+            var qw=0;
+            var q2=0;
+            var score=0;
+            let t=30
+            setInterval (timer,1000);
+            function timer()
+            {
+                document.getElementById("time").innerHTML=t--;
+                if(t==0)
+                {
+                    clearInterval(timer);
+                    window.Redirect
+                    alert(`time up your score is ${score}`);
+                    t=30;
+                    score=0;
+                }
+            }
+            function addboth(id)
+            {
+                document.getElementById(id);
+                if(id=="c1")
+                {
+
+                q3=document.getElementById("c1");
+                q3.style.opacity=1;
+                q3.id="c2";
+                
+                var c=document.querySelector("table").rows[0].cells.length;
+                const tr=document.createElement("tr");
+                //add row
+                p=document.querySelector("table").lastElementChild.appendChild(tr); 
+                for(i=0;i<c;i++)
+                {
+                    const td=document.createElement("td");
+                    p.appendChild(td);
+                    td.setAttribute("onclick","addboth(this.id)");
+                }
+
+                //add column
+                var q=document.querySelectorAll("tr");
+                for(i=0;i<q.length;i++)
+                {
+                    const td2=document.createElement("td");
+                    q[i].appendChild(td2);
+                    td2.setAttribute("onclick","addboth(this.id)");
+                }
+
+                //bgcolor
+                q2=document.querySelectorAll("td");
+                var r=Math.floor(Math.random()*255);
+                var g=Math.floor(Math.random()*255);
+                var b=Math.floor(Math.random()*255);
+                var rgb=`rgb(${r},${g},${b})`;
+                for(i=0;i<q2.length;i++)
+                {
+                    q2[i].style.backgroundColor=rgb;
+                }
+
+                //opacity
+                var l=Math.floor(Math.random()*(q2.length-1));
+                var o=q2[l];
+                qw=l;
+                q2[l].setAttribute("id",'c1');
+                o.style.opacity=0.7;
+                score=score+10;
+               
+            }
+            else
+            {
+                score=score-5;
+            }
+            document.getElementById("score").innerHTML="score is :"+score;
+            
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>student form</title>
+    </head>
+    <body>
+        <form action="/student.js" method="post">
+            <table >
+                <tr>
+                    <td><label for="name">first name</label></td>
+                    <td colspan="2"><input type="text"name="fname" id="fname"></td>
+                </tr>
+                <tr>
+                    <td><label for="lname">last name</label></td>
+                    <td colspan="2"><input type="text"name="lname" id="lname"></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age</label></td>
+                    <td colspan="2"><input type="text"name="age" id="age"></td>
+                </tr>
+                <tr>
+                    <td><label for="number">Number</label></td>
+                    <td colspan="2"><input type="text" name="number" id="number"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">email</label></td>
+                    <td colspan="2"><input type="text"name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">gender</label></td>
+                    <td> <input type="radio" id="male" value="Male" name="Gender">
+                        <label for="Male">Male</label></td>
+                    
+                    <td><input type="radio" id="female" value="female" name="Gender">
+                        <label for="Female">Female</label></td>
+                </tr>
+                <tr>
+                    <td><label for="Hobbies">Hobbies</label></td>
+                    <td><input type="checkbox" name="Hobbies[]" id="reading" value="reading"><label for="reading">Reading</label></td>
+                    <td><input type="checkbox" name="Hobbies[]" id="playing" value="playing"><label for="playing">playing</label></td>
+                    <td><input type="checkbox" name="Hobbies[]" id="dancing" value="dancing"><label for="dancing">dancing</label></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address</label></td>
+                    <td colspan="4"><textarea name="address" id="address" placeholder="enter address" row="3" cols="30"></textarea></td>
+                </tr>
+                <tr>
+                    <td>
+                         <input type="submit" name="submit" value="submit">
+                    </td>
+                </tr>
+            </tabel>
+        </form>
+    </body>
+</html>

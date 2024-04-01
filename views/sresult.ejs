@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>sresult</title>
+    </head>
+    <body>
+       <h1 align="center">SHINDE TUSHAR</h1>
+       <h2 align="center">RESULT</h2>
+<table border=1px>
+    <tr>
+        <th>name</th>
+        <td  colspan="13"><%= data[0].NAME %></td>
+    </tr>
+    <tr>
+        <th>Roll no</th>
+        <td  colspan="12"><%= data[0].id %></td>
+    </tr>
+    <tr>
+        <th>Attendence</th>
+        <td  colspan="12"><%= data[0].atpr %></td>
+    </tr>
+<table>
+        <table border="1">
+            <% var totalprelimpractical=0; %>
+            <% var totalprelimtheory=0; %>
+            <% var totalterminalpractical=0; %>
+            <% var totalterminaltheory=0; %>
+            <% var totalfinalpractical=0; %>
+            <% var totalfinaltheory=0; %>
+            <% var total=0; %>
+            <tr>
+                <th rowspan="2">subject</th>
+                <th colspan="4">prelim</th>
+                <th colspan="4">terminal</th>
+                <th colspan="4">final</th>
+            </tr>
+            <tr>
+                <td>obtained practicalmarks</td>
+                <td>total practicalmarks</td>
+                <td>obtained theorymarks</td>
+                <td>total theorymarks</td>
+                <td>obtained practicalmarks</td>
+                <td>total practicalmarks</td>
+                <td>obtained theorymarks</td>
+                <td>total theorymarks</td>
+                <td>obtained practicalmarks</td>
+                <td>total practicalmarks</td>
+                <td>obtained theorymarks</td>
+                <td>total theorymarks</td>
+            </tr>
+            
+            <% for(let i=0;i<data.length;i++) {%>
+            <tr>
+                <td><%=  data[i].sname %></td>
+                <td><%= data[i].prelimpractical %></td>
+                <td>20</td>
+                <td><%= data[i].prelimtheory %></td>
+                <td>30</td>
+                <td><%= data[i].terminalpractical %></td>
+                <td>20</td>
+                <td><%= data[i].terminaltheory %></td>
+                <td>30</td>
+                <td><%= data[i].finalpractical %></td>
+                <td>30</td>
+                <td><%=data[i].finaltheory %></td>
+                <td>70</td>
+                <% totalprelimpractical+=data[i].prelimpractical; %>
+                <% totalprelimtheory+=data[i].prelimtheory; %>
+                <% totalterminalpractical+=data[i].terminalpractical; %>
+                <% totalterminaltheory+=data[i].terminaltheory; %>
+                <% totalfinalpractical+=data[i].finalpractical; %>
+                <% totalfinaltheory+=data[i].finaltheory; %>
+            <% } %>
+            </tr>
+            
+            <tr>
+                <td>total</td>
+                <td><%= totalprelimpractical %></td>
+                <TD>120</TD>
+                <td><%= totalprelimtheory%></td>
+                <td>180</td>
+                <td><%= totalterminalpractical %></td>
+                <TD>120</TD>
+                <td><%= totalterminaltheory %></td>
+                <td>180</td>
+                <td><%= totalfinalpractical %></td>
+                <td>180</td>
+                <td><%= totalfinaltheory %></td>
+                <td>420</td>    
+            </tr>
+            <tr>
+                <td colspan="2">Obtained total marks</td>
+                <td colspan="11"><%= totalprelimpractical+totalprelimtheory+totalterminalpractical+totalterminaltheory+totalfinalpractical+totalfinaltheory %></td>
+            </tr>
+            <tr>
+                <td colspan="2">total marks</td>
+                <td colspan="11"><%= 120+120+180+180+180+420 %></td>
+            </tr>
+            <tr>
+                <td colspan="2">percentage</td>
+                <td colspan="11"><%= Math.floor((((totalprelimpractical+totalprelimtheory+totalterminalpractical+totalterminaltheory+totalfinalpractical+totalfinaltheory)/1200)*100)) %></td>
+            </tr>
+        </table>
+    <a href="/result/?pageno=1">HOME</a>
+</body>
+</html>

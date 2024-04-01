@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <table border=1px>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>email</th>
+                <th>Number</th>
+                <th>More details</th>
+            </tr>
+            <% for(let i=0;i<data.length;i++){ %>
+                <tr>
+                <td><%= data[i].fname %></td>
+                <td><%= data[i].lname %></td>
+                <td><%= data[i].email %></td> 
+                <td><%= data[i].number %></td>
+                <td><a href="http://localhost:8080/md.ejs/?id=<%= i %>">details</a></td>
+                </tr>
+            <% } %>
+        </table>
+        
+    </body>
+</html> 

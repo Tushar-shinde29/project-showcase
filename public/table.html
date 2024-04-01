@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <style>
+            tr:nth-child(even) td:nth-child(even),
+            tr:nth-child(odd) td:nth-child(odd){
+                background-color: black;
+            }
+
+            tr:nth-child(odd) td:nth-child(even),
+            tr:nth-child(even) td:nth-child(odd){
+                background-color:white;
+            }
+            td{
+                height: 100px;
+                width: 100px;
+            }
+            
+        </style>
+        <h1 align="center">Tushar shinde</h1>
+        <h2 align="center">DAY1 JS</h2>
+        <h3 align="center">24DEV028</h3>
+    </head>
+    <body>
+        <table border="1" id="mytab">
+            <tr class="a" id="r1">
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr class="b" id="r2">
+                <td>22</td>
+                <td>33</td>
+            </tr>
+        </table>
+        <button id="btn" name="add" value="add" onclick="rowadd()">add</button>
+        <button id="btn" name="coladd" value="coladd" onclick="coladd()">coladd</button>
+        <button id="btn" name="delrow" value="delrow" onclick="delrow()">delrow</button>
+        <button id="btn" name="delcol" value="delcol" onclick="delcol()">delcol</button>
+        
+        <script src="./js/table.js"></script>
+    </body>
+</html>

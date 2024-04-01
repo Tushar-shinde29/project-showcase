@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <title>JS</title>
+        <style>
+            .one{
+            color:gray;
+            background-color:whitesmoke;
+            }
+            .two{
+            color:gray;
+            background-color:yellow;
+            }
+        </style>
+    </head>
+    <body onload="alert('page is loading')" ononline="alert('page is online')" onoffline="alert('page is offline')" onresize="rs()">
+        <h1>JAVASCRIPT</h1>
+        <table border="1px" style="height:400px;width: 400px;" >
+            <tr>
+                <td class="one" id="1">
+                    <p onclick="alert('oh no u click on this')">hello world (onclick)</p>
+                </td>
+                <td class="two">
+                    <p onmouseover="over()">hello world (mouseover)</p>
+                </td>
+                <td class="one"><p onmouseleave="leave()">hello world (mouseleave)</p>
+                </td>
+                <td class="two">
+                    <label for="blur">onblur event</label>
+                    <input type="text" id="t1" onblur="blur1()">
+                </td>
+                <td class="one">
+                    <label for="blur">onchange event</label>
+                    <input type="text" id="t2" onchange="change1()">
+                </td>
+            </tr>
+            <tr>
+                <td class="two">
+                    <label for="blur">oncontextmenu event</label>
+                    <input type="text" id="t2" oncontextmenu="cm()">
+                    
+                </td>
+                <td class="one" >
+                    <label for="copy">oncopy event</label>
+                    <input type="text" id="t3" oncopy="cp()">
+                </td>
+                <td class="two">
+                    <label for="cut">oncut event</label>
+                    <input type="text" id="t4" oncut="cut1()">
+                </td>
+                <td class="one">
+                    <p ondblclick="alert('oh no u double click on this')">hello world (ondblclick)</p>
+                </td>
+                <td class="two">
+                    <p draggable=true ondrag="alert('you try to drag elements ')">hello world (ondrag)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="one">
+                    <p draggable=true ondragend="alert('you complete drag ')">hello world (ondragend)</p>
+                </td>
+                <td class="two">
+                    <p draggable=true ondragenter="alert('you enter drag area')">hello world (ondragenter)</p>
+                </td>
+                <td class="one">
+                    <p draggable=true ondragleave="alert('you leave drag area')">hello world (ondragleave)</p>
+                </td>
+                <td class="two">
+                    <p draggable=true ondragstart="alert('you start drag')">hello world (ondragstart)</p>
+                </td>
+                <td class="one" id="d1" ondragover="over1()">
+                    <p>drag over</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="two" ondrop="alert('u drop me')">
+                    <p draggable=true >drop</p>
+                    
+                </td>
+                <td class="one" >
+                    <label for="focus">onfocus event</label>
+                    <input type="text" id="t5" onblur="focus1()">
+                </td>
+                <td class="two">
+                    <label for="fin">onfocusin event</label>
+                    <input type="text" id="t6" onfocusin="alert('focus in')">
+                </td>
+                <td class="one">
+                    <label for="fout">onfocusout event</label>
+                    <input type="text" id="t7" onfocusout="alert('focus out')">
+                </td>
+                <td class="two">
+                    <label for="in">oninput event</label>
+                    <input type="text" id="t8" oninput="alert('u start inputing')">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="one">
+                    <form>
+                        <input type="text" id="t9" oninvalid="alert('u missed details')" required>
+                        <input type="submit"  value="submit">
+                    </form>
+                </td>
+                <td class="two">
+                    <p>key up down</p>
+                    <input type="text" id="t10" onkeydown="kd()" onkeyup="ku()">
+                </td>
+                <td class="one">
+                    <p>onload</p>
+                </td>
+                <td class="two">
+                    <p onmousedown="alert('mouse down occured')">hello world(mouse down)</p>
+                </td>
+                <td class="one" id="d1" onmouseenter="om1()">
+                    <p>onmouse enter</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="two" >
+                    <p onmousemove="om2()">onmouse move</p>
+                    
+                </td>
+                <td class="one" >
+                    <p onmouseup="alert('mouse up occured')">hello world(mouse up)</p>
+                </td>
+                <td class="two">
+                    <label for="paste">onpaste event</label>
+                    <input type="text" id="t11" onpaste="pc()">
+                </td>
+                <td class="one">
+                    
+                </td>
+                <td class="two">
+                    <label for="in">oninput event</label>
+                    <input type="text" id="t8" oninput="alert('u start inputing')">
+                    
+                </td>
+            </tr>
+        </table>
+        <script>
+            function rs()
+            {
+                document.body.style.background="green";
+            }
+            function ku(){
+                document.body.style.background="aqua";
+            }
+            function kd(){
+                document.body.style.background="green";
+            }
+            function om2(){
+                document.body.style.background="pink";
+            }
+            function om1(){
+                document.body.style.background="orange";
+            }
+            function leave(){
+                document.body.style.background="black";
+            }
+            function over(){
+                document.body.style.background="white";
+            }
+            function blur1()
+            {
+                window.alert('onblur occured');
+            }
+            function change1()
+            {
+                const p1=document.getElementById("t2");
+                p1.style.backgroundColor="red";
+            }
+            function cm()
+            {
+                document.body.style.background="red";
+            }
+            function cp()
+            {
+                window.alert("hey , you are trying to copy text");
+            }
+            function pc()
+            {
+                window.alert("hey , you are trying to paste text");
+            }
+            function cut1()
+            {
+                window.alert("you cut the text");
+            }
+            function over1()
+            {
+                document.getElementById("d1").style.background="red";
+            }
+            function focus1()
+            {
+                alert('on focus occured');
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>TIC TAC TOE</title>
+        <style>
+            .mytab{
+                
+                height: 450px;
+                width: 450px;
+            }
+            td{
+                border:2px solid rgb(206, 0, 0);
+                border-radius: 10px;
+                height: 50px;
+                width: 50px;
+                font-size: 35px;
+            }
+            body{
+                background-color: bisque;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 align="center">Tushar shinde </h1>
+        <h2 align="center">Day2 TIC TAC TOE DEMO</h2>
+        <h3 align="center">24DEV028</h3>
+        <table class="mytab" id="tab" align="center">
+            <tr>
+                <td id="t1" align="center" onclick="onx(this.id)"></td>
+                <td id="t2" align="center" onclick="onx(this.id)"></td>
+                <td id="t3" align="center" onclick="onx(this.id)"></td>
+            </tr>
+            <tr>
+                <td id="t4" align="center" onclick="onx(this.id)"></td>
+                <td id="t5" align="center" onclick="onx(this.id)"></td>
+                <td id="t6" align="center" onclick="onx(this.id)"></td>
+            </tr>
+            <tr>
+                <td id="t7" align="center" onclick="onx(this.id)"></td>
+                <td id="t8" align="center" onclick="onx(this.id)"></td>
+                <td id="t9" align="center" onclick="onx(this.id)"></td>
+            </tr>
+        </table>
+        <p id="turn" align="center">PLAYER X TURN</p>
+        <script>
+            var c=0,g=0;
+            const x=[];
+            const o=[];
+            var t1=document.getElementById("t1");
+            var t2=document.getElementById("t2");
+            var t3=document.getElementById("t3");
+            var t4=document.getElementById("t4");
+            var t5=document.getElementById("t5");
+            var t6=document.getElementById("t6");
+            var t7=document.getElementById("t7");
+            var t8=document.getElementById("t8");
+            var t9=document.getElementById("t9");
+            const winc=[[t1,t2,t3],[t6,t5,t4],[t9,t8,t7],[t7,t4,t1],[t8,t2,t5],[t9,t6,t3],[t1,t5,t9],[t7,t5,t3]];
+            console.log(t1.textContent);
+            function reset()
+            {
+                var q=document.querySelectorAll("td");
+                for(let i=0;i<q.length;i++)
+                {
+                    q[i].innerHTML="";
+                }
+                while(o.length>0)
+                {
+                    o.pop();
+                }
+                while(x.length>0)
+                {
+                    x.pop();
+                }
+                c=0;
+                g=0;
+                var x1=document.getElementById("turn");
+                x1.innerHTML="Player X turn";
+                document.body.style.backgroundColor="aqua";
+            }
+            function onx(id)
+            {
+                if((c%2)==0)
+                {
+                    var x1=document.getElementById(id);
+                    if(x1.textContent=="")
+                    {
+                    x1.innerHTML="X";
+                    x.push(x1);
+                    document.getElementById("turn").innerHTML="PLAYER O TURN";
+                    c++;
+                    document.body.style.backgroundColor="aqua"; 
+                    }
+                }
+                else
+                {
+                    var o1=document.getElementById(id);
+                    if(o1.textContent=="")
+                    {
+                    o1.innerHTML="O";
+                    o.push(o1);
+                    document.getElementById("turn").innerHTML="PLAYER X TURN";
+                    c++;
+                    document.body.style.backgroundColor="aqua";
+                    }
+                    else
+                    {
+                        document.body.style.backgroundColor="red";
+                    }
+                }
+                let ol=o.length;
+                let xl=x.length;
+                let cwin=(parent,carray)=>{
+                        return carray.every((Element)=>{
+                            return parent.includes(Element)});
+                    }
+                if(ol>=3)
+                {
+                    for (let i = 0; i < winc.length; i++) {
+                        const carray = winc[i];
+                        if(cwin(o,carray))
+                        {
+                            g=1;
+                            document.body.style.backgroundColor="green";           
+                            alert("player O win");
+                            reset();                          
+                        }
+                    }
+                }
+                if(xl>=3)
+                {
+                    for (let i = 0; i < winc.length; i++) {
+                        const carray = winc[i];
+                        if(cwin(x,carray))
+                        {
+                            g=1;
+                            document.body.style.backgroundColor="green";
+                            alert("player X  win");
+                            
+                            reset();    
+                        }   
+                    }
+                }
+                console.log(c,g);
+                if(g==0 && c==9)
+                {
+                    alert("draw");
+                    reset();
+                }
+                // document.getElementById("tab").style="border : 5px solid black; height: 900px ; width: 900px";
+            }
+            
+        </script>
+    </body>
+</html>
