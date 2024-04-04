@@ -140,7 +140,7 @@ async function login()
             {
                 // document.getElementById('lerror').innerHTML=`username : ${p.data[0].username} , firstname : ${p.data[0].fname} , lastname : ${p.data[0].lname}`;
                 const d = new Date();
-                d.setTime(d.getTime() + (60*1000));
+                d.setTime(d.getTime() + (5*60*1000));
                 let expires = "expires="+ d.toUTCString();
                 document.cookie=`token=${p.token};${expires};path=/`;
                 window.location.href="/home";

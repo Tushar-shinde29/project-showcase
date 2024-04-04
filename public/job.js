@@ -353,9 +353,9 @@ function setdata(op)
     }
 
     //preference
-    document.getElementById('notice').value=op['preference'].notice;
-    document.getElementById('exctc').value=op['preference'].expectedctc;
-    document.getElementById('cuctc').value=op['preference'].currentctc;
+    document.getElementById('notice').value=op['preference'][0].notice;
+    document.getElementById('exctc').value=op['preference'][0].expectedctc;
+    document.getElementById('cuctc').value=op['preference'][0].currentctc;
     selectval('dep',op['preference']['department']);
 }
 
