@@ -1,4 +1,4 @@
-const { execute } = require("./dbconnection");
+const { execute } = require("../config/dbconnection");
 
 async function allstudentdata(pageno) {
     var q = "select * from student1 ";

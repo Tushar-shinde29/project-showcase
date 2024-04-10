@@ -1,4 +1,4 @@
-const { execute } = require('./dbconnection');
+const { execute } = require('../config/dbconnection');
 async function attendencedata(month,offset,pageno){
     const m=[12,1,2];
     var result=null;

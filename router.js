@@ -75,8 +75,6 @@ router.get('/active',active);
 
 router.get('/createpassword',createpassword);
 
-// router.get('/registration',registration);
-
 router.post('/login',login1);
 
 router.post('/checkuser',checkuser);

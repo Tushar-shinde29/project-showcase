@@ -1,4 +1,4 @@
-const { execute } = require('./dbconnection');
+const { execute } = require('../config/dbconnection');
 async function querydata(month,offset,orderby,order) {
     var columnname=['id','firstname','present','pr'];
     var sequence=['asc','desc'];

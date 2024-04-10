@@ -27,6 +27,7 @@ function salt() {
     console.log(salt);
     return salt;
 }
+
 function activationcode() {
     let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     var code = "";
@@ -37,7 +38,6 @@ function activationcode() {
     console.log(code);
     return code;
 }
-
 
 const setpassword = async (req, res) => {
     var data = req.body;
@@ -68,7 +68,7 @@ const checkuser = async (req, res) => {
     var email = data.email;
     var code = activationcode();
     var user = await usercheck(username, email);
-    if (user == null) {
+    if (!(user == null)) {
         res.setHeader('content-Type', 'application/json');
         res.json({ "msg": "user already exist" });
     }
@@ -131,17 +131,6 @@ const registration = (req, res) => {
 
 const createpassword = async (req, res) => {
     var sp = url.parse(req.url, true).query;
-    // var q1=`select username,created_at,update_at from users where activationcode='${sp.code}'`;
-    //     var d=[];
-    //     console.log(q1);
-    //     result2=await execute(q1,d);
-    //     // // console.log(Date.parse(result2[0].created_at),Date.now());
-    //     // if((Date.now()-Date.parse(result2[0].created_at))>30000)
-    //     // {
-    //     //     res.render('activate');
-    //     // }
-    //     // else
-    //     // {
     res.render('createpassword');
     // }
 };

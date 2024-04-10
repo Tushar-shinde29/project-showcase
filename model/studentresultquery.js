@@ -1,4 +1,4 @@
-const { execute } = require("./dbconnection");
+const { execute } = require("../config/dbconnection");
 
 async function totalrecord() {
     var q = "select count(*) as record from studentmaster";

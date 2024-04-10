@@ -74,7 +74,6 @@ function validatereg()
 
 async function register()
 {
-    
     if(validatereg())
     {
 

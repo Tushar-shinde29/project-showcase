@@ -1,4 +1,4 @@
-const { execute } = require('./dbconnection');
+const { execute } = require('../config/dbconnection');
 async function statedata() {
     var q = `select name from states order by name`;
     result = await execute(q);
